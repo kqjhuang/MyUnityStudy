@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UnityChan/Scripts/creat_cube.cs">
     <Files>
-      <File FileName="Assets/UnityChan/Scripts/creat_cube.cs" Line="80" Column="12" />
       <File FileName="Assets/UnityChan/Scripts/SceneLoader.cs" Line="1" Column="1" />
       <File FileName="Assets/UnityChan/Scripts/FaceUpdate.cs" Line="1" Column="1" />
+      <File FileName="Assets/UnityChan/Scripts/creat_cube.cs" Line="97" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
