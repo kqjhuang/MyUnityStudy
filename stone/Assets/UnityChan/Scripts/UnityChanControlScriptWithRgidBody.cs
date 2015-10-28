@@ -14,6 +14,8 @@ using System.Collections;
 public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 {
 
+	public Transform m_cacheTransform;
+
 	public float animSpeed = 1.5f;				// アニメーション再生速度設定
 	public float lookSmoother = 3.0f;			// a smoothing setting for camera motion
 	public bool useCurves = true;				// Mecanimでカーブ調整を使うか設定する
@@ -54,6 +56,8 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 // 初期化
 	void Start ()
 	{
+
+		m_cacheTransform = transform;
 		// Animatorコンポーネントを取得する
 		anim = GetComponent<Animator>();
 		// CapsuleColliderコンポーネントを取得する（カプセル型コリジョン）
@@ -83,7 +87,7 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 		// 以下、キャラクターの移動処理
 		velocity = new Vector3(0, 0, v);		// 上下のキー入力からZ軸方向の移動量を取得
 		// キャラクターのローカル空間での方向に変換
-		velocity = transform.TransformDirection(velocity);
+		velocity = m_cacheTransform.TransformDirection(velocity);
 		//以下のvの閾値は、Mecanim側のトランジションと一緒に調整する
 		if (v > 0.1) {
 			velocity *= forwardSpeed;		// 移動速度を掛ける
@@ -116,29 +120,29 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 
 
 		// 上下のキー入力でキャラクターを移動させる
-		transform.localPosition += velocity * Time.fixedDeltaTime;
+		m_cacheTransform.localPosition += velocity * Time.fixedDeltaTime;
 
 		float x, z;
-		if (transform.localPosition.x < -50) {
+		if (m_cacheTransform.localPosition.x < -50) {
 			x = -50;
-		} else if (transform.localPosition.x > 50) {
+		} else if (m_cacheTransform.localPosition.x > 50) {
 			x = 50;
 		} else {
-			x = transform.localPosition.x;
+			x = m_cacheTransform.localPosition.x;
 		}
 
-		if (transform.localPosition.z < -50) {
+		if (m_cacheTransform.localPosition.z < -50) {
 			z = -50;
-		} else if (transform.localPosition.z > 50) {
+		} else if (m_cacheTransform.localPosition.z > 50) {
 			z = 50;
 		} else {
-			z = transform.localPosition.z;
+			z = m_cacheTransform.localPosition.z;
 		}
 
-		transform.localPosition = new Vector3 (x, transform.localPosition.y, z);
+		m_cacheTransform.localPosition = new Vector3 (x, m_cacheTransform.localPosition.y, z);
 
 		// 左右のキー入力でキャラクタをY軸で旋回させる
-		transform.Rotate(0, h * rotateSpeed, 0);	
+		m_cacheTransform.Rotate(0, h * rotateSpeed, 0);	
 	
 
 		// 以下、Animatorの各ステート中での処理
@@ -170,7 +174,7 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 						rb.useGravity = false;	//ジャンプ中の重力の影響を切る
 										
 					// レイキャストをキャラクターのセンターから落とす
-					Ray ray = new Ray(transform.position + Vector3.up, -Vector3.up);
+					Ray ray = new Ray(m_cacheTransform.position + Vector3.up, -Vector3.up);
 					RaycastHit hitInfo = new RaycastHit();
 					// 高さが useCurvesHeight 以上ある時のみ、コライダーの高さと中心をJUMP00アニメーションについているカーブで調整する
 					if (Physics.Raycast(ray, out hitInfo))
@@ -217,16 +221,10 @@ public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 		}
 	}
 
-	void OnGUI()
-	{
-		GUI.Box(new Rect(Screen.width -260, 10 ,250 ,150), "Interaction");
-		GUI.Label(new Rect(Screen.width -245,30,250,30),"Up/Down Arrow : Go Forwald/Go Back");
-		GUI.Label(new Rect(Screen.width -245,50,250,30),"Left/Right Arrow : Turn Left/Turn Right");
-		GUI.Label(new Rect(Screen.width -245,70,250,30),"Hit Space key while Running : Jump");
-		GUI.Label(new Rect(Screen.width -245,90,250,30),"Hit Spase key while Stopping : Rest");
-		GUI.Label(new Rect(Screen.width -245,110,250,30),"Left Control : Front Camera");
-		GUI.Label(new Rect(Screen.width -245,130,250,30),"Alt : LookAt Camera");
-	}
+//	void OnGUI()
+//	{
+//
+//	}
 
 
 	// キャラクターのコライダーサイズのリセット関数

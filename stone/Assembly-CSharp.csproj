@@ -188,6 +188,9 @@
      <Compile Include="Assets\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
      <Compile Include="Assets\UnityChan\Scripts\creat_cube.cs" />
      <Compile Include="Assets\UnityChan\Scripts\cube_show.cs" />
+     <Compile Include="Assets\script\other_shape.cs" />
+     <Compile Include="Assets\script\test_plane.cs" />
+     <Compile Include="Assets\script\test_tou.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.8.2.txt" />

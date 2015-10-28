@@ -1,11 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UnityChan/Scripts/creat_cube.cs">
     <Files>
-      <File FileName="Assets/UnityChan/Scripts/UnityChanControlScriptWithRgidBody.cs" Line="112" Column="39" />
-      <File FileName="Assets/UnityChan/Scripts/ThirdPersonCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/UnityChan/Scripts/cube_show.cs" Line="1" Column="1" />
-      <File FileName="Assets/UnityChan/Scripts/creat_cube.cs" Line="18" Column="66" />
+      <File FileName="Assets/UnityChan/Scripts/creat_cube.cs" Line="80" Column="12" />
+      <File FileName="Assets/UnityChan/Scripts/SceneLoader.cs" Line="1" Column="1" />
+      <File FileName="Assets/UnityChan/Scripts/FaceUpdate.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
